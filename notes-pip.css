@@ -1,0 +1,71 @@
+.note-list-action-bar-item.open-pip-btn {
+  display: inline-block;
+  width: 24px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1;
+  color: #4e4e4e;
+  text-align: center;
+}
+
+.notes-pip-window {
+  position: absolute;
+  z-index: 1002;
+  width: 40vw;
+  height: 40vh;
+  overflow: auto;
+  resize: both;
+  background: #fff;
+  border: 1px solid #e7e7e7;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+}
+
+.notes-pip-window header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  box-sizing: border-box;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-around;
+  width: 100%;
+  padding: 4px;
+  margin: 0;
+  line-height: 1;
+  color: #4e4e4e;
+  background: #fbfbfb;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.notes-pip-window header select {
+  flex-grow: 2;
+  vertical-align: middle;
+  background: #fbfbfb;
+  border: 1px solid #e7e7e7;
+}
+
+.notes-pip-window header span {
+  flex-grow: 3;
+}
+
+.notes-pip-window object {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(100% - 16px);
+  background: #fff;
+}
+
+.notes-pip-droparea {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.125);
+}

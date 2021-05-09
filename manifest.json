@@ -2,5 +2,13 @@
   "manifest_version": 2,
   "name": "box-extensions",
   "description": "",
-  "version": "0.0.0"
+  "version": "0.0.15",
+  "content_scripts": [
+    {
+      "matches": ["https://notes.services.box.com/*"],
+      "all_frames": true,
+      "js": ["notes-pip.js"],
+      "css": ["notes-pip.css"]
+    }
+  ]
 }
