@@ -1,6 +1,14 @@
 {
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "run-p --aggregate-output --continue-on-error --print-label lint:*",
+    "lint:prettier": "prettier --check . --ignore-path .gitignore",
+    "lint:eslint": "eslint . --ignore-path .gitignore",
+    "lint:stylelint": "stylelint '**/*.{css,scss,sass}' --ignore-path .gitignore",
+    "fix": "run-s fix:prettier fix:eslint fix:stylelint",
+    "fix:prettier": "npm run lint:prettier -- --write",
+    "fix:eslint": "npm run lint:eslint -- --fix",
+    "fix:stylelint": "npm run lint:stylelint -- --fix"
   },
   "author": "mtzky",
   "license": "Apache-2.0",
