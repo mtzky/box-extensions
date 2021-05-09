@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mtzky",
+  "license": "Apache-2.0",
+  "private": true
+}
