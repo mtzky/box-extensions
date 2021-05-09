@@ -4,5 +4,8 @@
   },
   "author": "mtzky",
   "license": "Apache-2.0",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "prettier": "^2.2.1"
+  }
 }
