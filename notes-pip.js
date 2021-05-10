@@ -22,6 +22,7 @@
   openPipButton.appendChild(openPipIcon);
 
   openPipButton.addEventListener('click', () => {
+    const appHost = document.querySelector('a.options-menu-breadcrumbs[href]')?.host;
     const fileId = document.querySelector('.pad[data-file-id]')?.dataset.fileId;
     const zIndex = Array.from(document.querySelectorAll('.notes-pip-window'))
       .map((e) => e.style.zIndex)
@@ -73,7 +74,11 @@
       document.body.appendChild(droparea);
     });
 
-    const src = `https://app.box.com/notes_embedded/${fileId}?isReadonly=1&is_preview=1`;
+    const createNoteUrl = (appHost, fileId) => {
+      return `//${appHost}/notes_embedded/${fileId}?isReadonly=1&is_preview=1`;
+    };
+
+    const src = createNoteUrl(appHost, fileId);
     const object = document.createElement('object');
     object.type = 'text/html';
     object.data = src;
@@ -89,11 +94,11 @@
       object.data = event.target.value;
     });
     Array.from(noteUrls).reduce((noteList, a) => {
-      const href = a.href;
-      const fileId = href.substring(href.lastIndexOf('/') + 1);
+      const appHost = a.host;
+      const fileId = a.href.split('/').pop();
 
       const option = noteList.appendChild(document.createElement('option'));
-      option.value = `https://app.box.com/notes_embedded/${fileId}?isReadonly=1&is_preview=1`;
+      option.value = createNoteUrl(appHost, fileId);
       option.textContent = a.querySelector('.note-list-item-title').textContent;
       option.selected = option.value === src;
       return noteList;
