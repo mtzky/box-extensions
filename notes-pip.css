@@ -40,6 +40,10 @@
 
 .notes-pip-window header select {
   flex-grow: 2;
+  width: 50%;
+  max-width: max-content;
+  margin-right: 16px;
+  text-overflow: ellipsis;
   vertical-align: middle;
   background: #fbfbfb;
   border: 1px solid #e7e7e7;
