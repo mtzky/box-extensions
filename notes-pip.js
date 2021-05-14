@@ -92,22 +92,32 @@
     const headerBar = document.createElement('header');
     pipWindow.appendChild(headerBar);
 
-    const noteUrls = document.querySelectorAll('a.note-list-item-link-wrapper[href]');
     const noteList = headerBar.appendChild(document.createElement('select'));
     noteList.addEventListener('change', (event) => {
       event.preventDefault();
       object.data = event.target.value;
     });
-    Array.from(noteUrls).reduce((noteList, a) => {
-      const appHost = a.host;
-      const fileId = a.href.split('/').pop();
 
-      const option = noteList.appendChild(document.createElement('option'));
-      option.value = createNoteUrl(appHost, fileId);
-      option.textContent = a.querySelector('.note-list-item-title').textContent;
-      option.selected = option.value === src;
-      return noteList;
-    }, noteList);
+    for (const sourceList of ['inbox-list', 'favorite-notes-list']) {
+      const listContainer = document.querySelector(`.${sourceList}`);
+      if (!listContainer) {
+        continue;
+      }
+
+      const optgroup = noteList.appendChild(document.createElement('optgroup'));
+      optgroup.label = listContainer.parentElement?.querySelector('.note-list-title')?.textContent;
+
+      const noteUrls = listContainer.querySelectorAll('a.note-list-item-link-wrapper[href]');
+      for (const a of noteUrls) {
+        const appHost = a.host;
+        const fileId = a.href.split('/').pop();
+
+        const option = optgroup.appendChild(document.createElement('option'));
+        option.value = createNoteUrl(appHost, fileId);
+        option.textContent = a.querySelector('.note-list-item-title').textContent;
+        option.selected = option.value === src;
+      }
+    }
 
     headerBar.appendChild(document.createElement('span'));
 
