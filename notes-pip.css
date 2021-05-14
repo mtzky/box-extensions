@@ -1,11 +1,6 @@
-.note-list-action-bar-item.open-pip-btn {
-  display: inline-block;
-  width: 24px;
-  font-size: 20px;
+.buttonicon-open-pip svg text {
   font-weight: bold;
-  line-height: 1;
-  color: #4e4e4e;
-  text-align: center;
+  fill: #4e4e4e;
 }
 
 .notes-pip-window {

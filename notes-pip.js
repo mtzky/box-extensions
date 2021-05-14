@@ -17,8 +17,13 @@
   openPipButton.title = 'Open a picture-in-picture window';
 
   const openPipIcon = document.createElement('span');
-  openPipIcon.classList.add('buttonicon-open-pip', 'note-list-action-bar-item-icon"');
-  openPipIcon.textContent = '⧉';
+  openPipIcon.classList.add('buttonicon-open-pip', 'note-list-action-bar-item-icon');
+  openPipIcon.insertAdjacentHTML(
+    'beforeend',
+    `<svg width="24" height="24" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <text x="50%" y="40%" dominant-baseline="central" text-anchor="middle" font-size="20">⧉</text>
+    </svg>`
+  );
   openPipButton.appendChild(openPipIcon);
 
   openPipButton.addEventListener('click', () => {
